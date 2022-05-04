@@ -1,4 +1,3 @@
-
 #include <iostream>
 
 int main(int argc, char** argv)
@@ -14,9 +13,13 @@ int main(int argc, char** argv)
 	// Task1: Write your Code here
 	// ------------------------------------------------------------------------
 
+	
+	std::cout << numbers[0] << ", " << numbers[1] << ", " << numbers[2] << ", " << numbers[3] << ", " << numbers[4] << ", " << std::endl;
+	
 
 	// ------------------------------------------------------------------------
 
+	std::cout << "\n";
 
 	/*
 	TODO: Print each value of the array in reverse order
@@ -27,6 +30,7 @@ int main(int argc, char** argv)
 	// Task 2: Write your Code here
 	// ------------------------------------------------------------------------
 
+	std::cout << numbers[4] << ", " << numbers[3] << ", " << numbers[2] << ", " << numbers[1] << ", " << numbers[0] << ", " << std::endl;
 
 	// ------------------------------------------------------------------------
 
