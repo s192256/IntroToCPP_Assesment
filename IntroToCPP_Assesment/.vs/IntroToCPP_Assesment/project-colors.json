@@ -1,0 +1,36 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "8ecca592-38e2-4631-a381-c253f74bc0d1": {
+      "ProjectGuid": "8ecca592-38e2-4631-a381-c253f74bc0d1",
+      "DisplayName": "AIE_02",
+      "ColorIndex": 0
+    },
+    "de5d0f0f-d44c-46e4-bce9-f82d8b538b84": {
+      "ProjectGuid": "de5d0f0f-d44c-46e4-bce9-f82d8b538b84",
+      "DisplayName": "AIE_01",
+      "ColorIndex": 1
+    },
+    "b6fe8f07-bd22-4a8b-9246-99affcabde89": {
+      "ProjectGuid": "b6fe8f07-bd22-4a8b-9246-99affcabde89",
+      "DisplayName": "IntroToCPP_Assesment",
+      "ColorIndex": 2
+    },
+    "906238be-65a7-468e-a287-d78f3b4e891a": {
+      "ProjectGuid": "906238be-65a7-468e-a287-d78f3b4e891a",
+      "DisplayName": "AIE_03",
+      "ColorIndex": 3
+    },
+    "a8bc6b51-ca08-45ae-976e-05afd495e270": {
+      "ProjectGuid": "a8bc6b51-ca08-45ae-976e-05afd495e270",
+      "DisplayName": "AIE_04",
+      "ColorIndex": 4
+    },
+    "b5c48e9c-3067-4cce-8e18-7c390017fcc5": {
+      "ProjectGuid": "b5c48e9c-3067-4cce-8e18-7c390017fcc5",
+      "DisplayName": "AIE_05",
+      "ColorIndex": 5
+    }
+  },
+  "NextColorIndex": 6
+}
