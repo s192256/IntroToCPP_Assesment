@@ -1,0 +1,26 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "b6fe8f07-bd22-4a8b-9246-99affcabde89": {
+      "ProjectGuid": "b6fe8f07-bd22-4a8b-9246-99affcabde89",
+      "DisplayName": "IntroToCPP_Assesment",
+      "ColorIndex": 0
+    },
+    "de5d0f0f-d44c-46e4-bce9-f82d8b538b84": {
+      "ProjectGuid": "de5d0f0f-d44c-46e4-bce9-f82d8b538b84",
+      "DisplayName": "AIE_01",
+      "ColorIndex": 1
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    },
+    "8ecca592-38e2-4631-a381-c253f74bc0d1": {
+      "ProjectGuid": "8ecca592-38e2-4631-a381-c253f74bc0d1",
+      "DisplayName": "AIE_02",
+      "ColorIndex": 2
+    }
+  },
+  "NextColorIndex": 3
+}
