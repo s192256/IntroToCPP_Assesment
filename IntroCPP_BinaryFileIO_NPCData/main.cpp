@@ -22,6 +22,8 @@
 #include "raylib.h"
 #include "DataFile.h"
 
+#include <iostream>
+
 int main(int argc, char* argv[])
 {
     // Initialization
@@ -65,9 +67,12 @@ int main(int argc, char* argv[])
         if (IsKeyPressed(KEY_RIGHT))
         {
             currentRecordIdx++;
-            if (currentRecordIdx >= data.GetRecordCount())
+
+            //std::cout << currentRecordIdx << ", " << data.GetRecordCount() << std::endl;
+
+            if (currentRecordIdx >= data.GetRecordCount() - 1)
             {
-                currentRecordIdx = data.GetRecordCount();
+                currentRecordIdx = data.GetRecordCount() - 1;
             }
             currentRecord = data.GetRecord(currentRecordIdx);
             recordTexture = LoadTextureFromImage(currentRecord->image);
