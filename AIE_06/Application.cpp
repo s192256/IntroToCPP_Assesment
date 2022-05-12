@@ -2,6 +2,7 @@
 #include "raylib.h"
 #include <stdlib.h>
 
+#include <iostream>
 
 Application::Application()
 {
@@ -36,7 +37,10 @@ void Application::Load()
 	// value between 0 and 5 exclusive;
 	// -----------------------------------------------------
 	
-	// write your code here
+	for (int i = 0; i < ROWS * COLS; i++)
+	{
+		m_tiles[i] = GetRandomValue(0, 4);
+	}
 
 	// -----------------------------------------------------
 }
@@ -54,11 +58,24 @@ void Application::Update(float deltaTime)
 
 		// Task 3:
 		// TODO: Calculate row and col index based on the mouse positon
-		int rowIndex = 0; 
-		int colIndex = 0;
+
+		float mousePosX = mousePos.x;
+		float mousePosY = mousePos.y;
+
+		int rowIndex = mousePosY / m_tileWidth; 
+		int colIndex = mousePosX / m_tileHeight;
+
+		
+
+		std::cout << mousePosX << ", " << mousePosY << std::endl;
+
+		std::cout << rowIndex << ", " << colIndex << std::endl;
+
 
 		// TODO: calculate the index of the tile clicked on based on the row/col index
-		int tileIndex = 0;
+		int tileIndex = rowIndex + (colIndex * (m_tileWidth + m_tileHeight));
+
+		std::cout << tileIndex << std::endl;
 
 		m_tiles[tileIndex] += 1;
 		if (m_tiles[tileIndex] >= 5)
@@ -83,9 +100,37 @@ void Application::Draw()
 	// write your code here
 	float xPos = 0;
 	float yPos = 0;
-	Color color = GetTileColor(1); // pass in the tilevalue
+	int i = -1;
+	/*for (int x = 0; x < ROWS; x++)
+	{
+		for (int y = 0; y < COLS; y++)
+		{
+			for (int i = 0; i < ROWS * COLS; i++)
+			{
+				xPos += 20;
+				yPos += 20;
+				int index = m_tiles[i] /*(COLS * x) + y;
+				//std::cout << index << std::endl;
+				Color color = GetTileColor(index); // pass in the tilevalue
+				DrawRectangle(xPos, yPos, m_tileWidth, m_tileHeight, color);
+			}
+		}
+	}*/
 
-	DrawRectangle(xPos, yPos, m_tileWidth, m_tileHeight, color);
+	for (xPos = 0; xPos < ROWS * m_tileWidth; xPos += m_tileWidth)
+	{
+		for (yPos = 0; yPos < ROWS * m_tileHeight; yPos += m_tileHeight)
+		{
+			i++;
+			int index = m_tiles[i];
+			Color color = GetTileColor(index); // pass in the tilevalue
+			DrawRectangle(xPos, yPos, m_tileWidth, m_tileHeight, color);
+		}
+	}
+
+	
+
+	
 
 	// --------------------------------------------------------------------
 

@@ -1,0 +1,6 @@
+﻿  Application.cpp
+C:\Users\Admin\source\repos\IntroToCPP_Assesment\AIE_06\Application.cpp(65,16): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Admin\source\repos\IntroToCPP_Assesment\AIE_06\Application.cpp(66,16): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Admin\source\repos\IntroToCPP_Assesment\AIE_06\Application.cpp(127,24): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Admin\source\repos\IntroToCPP_Assesment\AIE_06\Application.cpp(127,18): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  AIE_06.vcxproj -> C:\Users\Admin\source\repos\IntroToCPP_Assesment\IntroToCPP_Assesment\bin\x64\Debug\AIE_06.exe
