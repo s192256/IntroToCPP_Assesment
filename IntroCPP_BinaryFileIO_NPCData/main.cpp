@@ -24,6 +24,8 @@
 
 #include <iostream>
 
+int recordIndexInt = 1;
+
 int main(int argc, char* argv[])
 {
     // Initialization
@@ -36,7 +38,8 @@ int main(int argc, char* argv[])
     DataFile data;
     int currentRecordIdx = 0;
 
-    data.Load("npc_data.dat");
+    
+    data.Load("npc_data.dat", recordIndexInt);
 
     DataFile::Record* currentRecord = data.GetRecord(currentRecordIdx);
     Texture2D recordTexture = LoadTextureFromImage(currentRecord->image);
@@ -56,6 +59,11 @@ int main(int argc, char* argv[])
         if (IsKeyPressed(KEY_LEFT))
         {
             currentRecordIdx--;
+            if (recordIndexInt != 1)
+                recordIndexInt--;
+
+            data.Load("npc_data.dat", recordIndexInt);
+
             if (currentRecordIdx < 0)
             {
                 currentRecordIdx = 0;
@@ -67,8 +75,10 @@ int main(int argc, char* argv[])
         if (IsKeyPressed(KEY_RIGHT))
         {
             currentRecordIdx++;
+            if (recordIndexInt != 5)
+                recordIndexInt++;
 
-            //std::cout << currentRecordIdx << ", " << data.GetRecordCount() << std::endl;
+            data.Load("npc_data.dat", recordIndexInt);
 
             if (currentRecordIdx >= data.GetRecordCount() - 1)
             {
@@ -89,6 +99,8 @@ int main(int argc, char* argv[])
 
         DrawText("NAME", 10, 50, 20, LIGHTGRAY);
         DrawText(currentRecord->name.c_str(), 10, 80, 20, LIGHTGRAY);
+
+        //std::cout << currentRecord->name << std::endl;
 
         DrawText("AGE", 10, 120, 20, LIGHTGRAY);
         DrawText(to_string(currentRecord->age).c_str(), 10, 150, 20, LIGHTGRAY);
