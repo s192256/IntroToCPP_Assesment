@@ -1,0 +1,27 @@
+﻿  RetroGame.cpp
+C:\Users\s192256\Documents\temp\IntroToCPP_Assesment\RetroGame\RetroGame.cpp(18,17): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\s192256\Documents\temp\IntroToCPP_Assesment\RetroGame\RetroGame.cpp(19,17): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\s192256\Documents\temp\IntroToCPP_Assesment\RetroGame\RetroGame.cpp(45,28): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\s192256\Documents\temp\IntroToCPP_Assesment\RetroGame\RetroGame.cpp(46,29): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\s192256\Documents\temp\IntroToCPP_Assesment\RetroGame\RetroGame.cpp(102,44): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\s192256\Documents\temp\IntroToCPP_Assesment\RetroGame\RetroGame.cpp(103,44): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\s192256\Documents\temp\IntroToCPP_Assesment\RetroGame\RetroGame.cpp(104,44): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\s192256\Documents\temp\IntroToCPP_Assesment\RetroGame\RetroGame.cpp(105,44): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\s192256\Documents\temp\IntroToCPP_Assesment\RetroGame\RetroGame.cpp(106,44): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\s192256\Documents\temp\IntroToCPP_Assesment\RetroGame\RetroGame.cpp(107,44): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\s192256\Documents\temp\IntroToCPP_Assesment\RetroGame\RetroGame.cpp(108,44): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\s192256\Documents\temp\IntroToCPP_Assesment\RetroGame\RetroGame.cpp(109,44): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\s192256\Documents\temp\IntroToCPP_Assesment\RetroGame\RetroGame.cpp(110,44): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\s192256\Documents\temp\IntroToCPP_Assesment\RetroGame\RetroGame.cpp(111,44): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\s192256\Documents\temp\IntroToCPP_Assesment\RetroGame\RetroGame.cpp(112,44): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\s192256\Documents\temp\IntroToCPP_Assesment\RetroGame\RetroGame.cpp(113,44): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\s192256\Documents\temp\IntroToCPP_Assesment\RetroGame\RetroGame.cpp(114,44): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\s192256\Documents\temp\IntroToCPP_Assesment\RetroGame\RetroGame.cpp(115,44): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\s192256\Documents\temp\IntroToCPP_Assesment\RetroGame\RetroGame.cpp(116,44): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\s192256\Documents\temp\IntroToCPP_Assesment\RetroGame\RetroGame.cpp(118,27): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\s192256\Documents\temp\IntroToCPP_Assesment\RetroGame\RetroGame.cpp(118,20): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\s192256\Documents\temp\IntroToCPP_Assesment\RetroGame\RetroGame.cpp(119,27): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\s192256\Documents\temp\IntroToCPP_Assesment\RetroGame\RetroGame.cpp(120,41): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  LINK : C:\Users\s192256\Documents\temp\IntroToCPP_Assesment\x64\Debug\RetroGame.exe not found or not built by the last incremental link; performing full link
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+  RetroGame.vcxproj -> C:\Users\s192256\Documents\temp\IntroToCPP_Assesment\x64\Debug\RetroGame.exe
