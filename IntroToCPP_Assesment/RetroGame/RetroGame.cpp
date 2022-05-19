@@ -18,7 +18,7 @@ int main()
 
     std::random_device r;
     std::default_random_engine generator{ r() };
-    std::uniform_real_distribution<float> distribution(-1.0, -1.0);
+    std::uniform_real_distribution<float> distribution(-1.0, 1.0);
     float rand = distribution(generator);
     float rand2 = distribution(generator);
 
@@ -108,9 +108,9 @@ int main()
             }
         }
 
-        if (ballY >= paddleLeftTop && ballY <= paddleLeftBot && ballX <= 20 && ballX >= 0)
+        if (ballY >= paddleLeftTop && ballY <= paddleLeftBot && ballX <= 25 && ballX >= 0 && ballXChange < 0)
             ballXChange = ballXChange * -1;
-        if (ballY >= paddleRightTop && ballY <= paddleRightBot && ballX >= screenWidth - 15 && ballX <= screenWidth)
+        if (ballY >= paddleRightTop && ballY <= paddleRightBot && ballX >= screenWidth - 20 && ballX <= screenWidth && ballXChange > 0)
             ballXChange = ballXChange * -1;
 
         ballX += (ballXChange);
