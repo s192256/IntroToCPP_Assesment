@@ -2,8 +2,6 @@
 #include <iostream>
 #include <random>
 
-
-
 int main()
 {
     // Initialization
@@ -20,7 +18,7 @@ int main()
 
     std::random_device r;
     std::default_random_engine generator{ r() };
-    std::uniform_real_distribution<float> distribution(-1.0, 1.0);
+    std::uniform_real_distribution<float> distribution(-1.0, -1.0);
     float rand = distribution(generator);
     float rand2 = distribution(generator);
 
@@ -45,21 +43,35 @@ int main()
     float paddleLeftHeight = screenHeight / 2 - 43;
     float paddleRightHeight = screenHeight / 2 - 43;
 
+
+    float paddleLeftTop = paddleLeftHeight;
+    float paddleLeftBot = paddleLeftHeight + 86;
+
+    float paddleRightTop = paddleRightHeight;
+    float paddleRightBot = paddleRightHeight + 86;
+
     //--------------------------------------------------------------------------------------
 
     // Main game loop
     while (!WindowShouldClose())    // Detect window close button or ESC key
     {
+
         if (IsKeyDown(KEY_W))
-            paddleLeftHeight -= 2.5;
+            paddleLeftHeight -= 5;
         if (IsKeyDown(KEY_S))
-            paddleLeftHeight += 2.5;
+            paddleLeftHeight += 5;
 
         if (IsKeyDown(KEY_UP))
-            paddleRightHeight -= 2.5;
+            paddleRightHeight -= 5;
 
         if (IsKeyDown(KEY_DOWN))
-            paddleRightHeight += 2.5;
+            paddleRightHeight += 5;
+
+        paddleLeftTop = paddleLeftHeight;
+        paddleLeftBot = paddleLeftHeight + 86;
+
+        paddleRightTop = paddleRightHeight;
+        paddleRightBot = paddleRightHeight + 86;
 
         if (ballXChange < 2.5 && ballXChange >= 0)
             ballXChange = 2.5;
@@ -69,6 +81,15 @@ int main()
             ballYChange = 2.5;
         if (ballYChange > -2.5 && ballYChange < 0)
             ballYChange = -2.5;
+
+        if (ballY < screenHeight - 10)
+        {
+            directionChange = false; 
+        }
+        else if (ballY > 10)
+        {
+            directionChange = false;
+        }
 
         if (ballY > screenHeight - 10)
         {
@@ -87,8 +108,15 @@ int main()
             }
         }
 
+        if (ballY >= paddleLeftTop && ballY <= paddleLeftBot && ballX <= 20 && ballX >= 0)
+            ballXChange = ballXChange * -1;
+        if (ballY >= paddleRightTop && ballY <= paddleRightBot && ballX >= screenWidth - 15 && ballX <= screenWidth)
+            ballXChange = ballXChange * -1;
+
         ballX += (ballXChange);
         ballY += (ballYChange);
+
+        
 
 
         // Draw
@@ -116,7 +144,11 @@ int main()
         DrawText("|", screenWidth / 2 - 1, 427.5, 20, WHITE);
 
         DrawCircle(ballX, ballY, 10, WHITE);
+
         DrawRectangle(10, paddleLeftHeight, 6, 86, WHITE);
+
+       
+
         DrawRectangle(screenWidth - 10, paddleRightHeight, 6, 86, WHITE);
 
 
