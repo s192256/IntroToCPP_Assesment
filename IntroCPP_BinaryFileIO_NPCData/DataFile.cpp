@@ -11,7 +11,7 @@ DataFile::DataFile()
 
 DataFile::~DataFile()
 {
-	//Clear();
+
 }
 
 void DataFile::AddRecord(string imageFilename, string name, int age)
@@ -23,10 +23,10 @@ void DataFile::AddRecord(string imageFilename, string name, int age)
 	r->name = name;
 	r->age = age;
 
-	//record.push_back(r);
 	recordCount++;
 }
 
+// Changed to call the records indiviually when required instead of getting from a vector
 DataFile::Record* DataFile::GetRecord(int index)
 {
 	return &record;
@@ -55,98 +55,17 @@ Color* GetImageData(Image image)
 	return (Color*)image.data;
 }
 
-//void DataFile::Save(string filename)
-//{
-//	ofstream outfile(filename, ios::binary);
-//
-//	int recordCount = records.size();
-//	outfile.write((char*)&recordCount, sizeof(int));
-//
-//	for (int i = 0; i < recordCount; i++)
-//	{		
-//		Color* imgdata = GetImageData(records[i]->image);
-//				
-//		int imageSize = sizeof(Color) * records[i]->image.width * records[i]->image.height;
-//		int nameSize = records[i]->name.length();
-//		int ageSize = sizeof(int);
-//
-//		outfile.write((char*)&records[i]->image.width, sizeof(int));
-//		outfile.write((char*)&records[i]->image.height, sizeof(int));
-//		
-//		outfile.write((char*)&nameSize, sizeof(int));
-//		outfile.write((char*)&ageSize, sizeof(int));
-//
-//		outfile.write((char*)imgdata, imageSize);
-//		outfile.write((char*)records[i]->name.c_str(), nameSize);
-//		outfile.write((char*)&records[i]->age, ageSize);
-//	}
-//
-//	outfile.close();
-//}
-
+// added recordIndexInt as an argument to call desired record
 void DataFile::Load(string filename, int recordIndexInt)
 {
-	//Clear();
-
 	ifstream infile(filename, ios::binary);
-
-	//int jumpInt = 0;
 
 	recordCount = 0;
 	infile.read((char*)&recordCount, sizeof(int));
 
-	//std::cout << recordIndexInt << std::endl;
-
-
-	bool alreadyran = false;
-
+	// changed to use recordIndexInt instead of recordCount in for loop to use for obtaining the correct record
 	for (int i = 0; i < recordIndexInt; i++)
 	{
-		//std::cout << infile.tellg() << std::endl;
-		
-		//if (!alreadyran)
-		//{
-
-
-		//	if (recordIndexInt == 1)
-		//	{
-		//		alreadyran = true;
-		//		std::cout << "1" << std::endl;
-		//		infile.seekg(4, ios::beg);
-		//		//std::cout << infile.tellg() << std::endl;
-		//	}
-		//	if (recordIndexInt == 2)
-		//	{
-		//		alreadyran = true;
-		//		std::cout << "2" << std::endl;
-		//		infile.seekg(4, ios::beg);
-		//		//std::cout << infile.tellg() << std::endl;
-		//	}
-		//	if (recordIndexInt == 3)
-		//	{
-		//		alreadyran = true;
-		//		std::cout << "3" << std::endl;
-		//		infile.seekg(4, ios::beg);
-		//		//std::cout << infile.tellg() << std::endl;
-		//	}
-		//	if (recordIndexInt == 4)
-		//	{
-		//		alreadyran = true;
-		//		std::cout << "4" << std::endl;
-		//		infile.seekg(4, ios::beg);
-		//		//std::cout << infile.tellg() << std::endl;
-		//	}
-		//	if (recordIndexInt == 5)
-		//	{
-		//		alreadyran = true;
-		//		std::cout << "5" << std::endl;
-		//		infile.seekg(4, ios::beg);
-		//		//std::cout << infile.tellg() << std::endl;
-		//	}
-		//}
-
-		std::cout << infile.tellg() << std::endl;
-
 		int nameSize = 0;
 		int ageSize = 0;
 		int width = 0, height = 0, format = 0, imageSize = 0;
@@ -159,42 +78,40 @@ void DataFile::Load(string filename, int recordIndexInt)
 		infile.read((char*)&nameSize, sizeof(int));
 		infile.read((char*)&ageSize, sizeof(int));
 		
-		char* imgdata = new char[imageSize];
-		infile.read(imgdata, imageSize);
+		// if i equals the recordIndexInt - 1 it will load the all the data from the previous variables to produce the
+		// display wanted for the records
+		// else it will skip to the start of the next record using the image, name and age Size
+		if (i == recordIndexInt - 1)
+		{
+			char* imgdata = new char[imageSize];
+			infile.read(imgdata, imageSize);
+
+			Image img = LoadImageEx((Color*)imgdata, width, height);
+			char* name = new char[nameSize];
+			int age = 0;
+
+			infile.read((char*)name, nameSize);
+			infile.read((char*)&age, ageSize);
+
+
+
+			record.image = img;
+			record.name = string(name, nameSize);
+			record.age = age;
+
+
+			delete[] imgdata;
+			delete[] name;
+		}
+		else
+		{
+			infile.seekg(imageSize + nameSize + ageSize, ios::cur);
+		}
+
 		
-		Image img = LoadImageEx((Color*)imgdata, width, height);
-		char* name = new char[nameSize];
-		int age = 0;
-		
-		infile.read((char*)name, nameSize);
-		infile.read((char*)&age, ageSize);
-		
-		//std::cout << name << std::endl;
-		
-		record.image = img;
-		record.name = string(name, nameSize);
-		record.age = age;
-		//std::cout << record.name << std::endl;
-		
-		//record.name
-		
-		//record.push_back(r);
-		
-		delete[] imgdata;
-		delete[] name;
 		
 	}
 
 	infile.close();
 }
-
-//void DataFile::Clear()
-//{
-//	for (int i = 0; i < record.size(); i++)
-//	{
-//		delete record[i];
-//	}
-//	record.clear();
-//	recordCount = 0;
-//}
 

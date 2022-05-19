@@ -35,7 +35,12 @@
       "ProjectGuid": "ea0df64e-9d87-45bf-a840-355c397290bf",
       "DisplayName": "AIE_06",
       "ColorIndex": 5
+    },
+    "7544d2ea-300c-4aeb-aa7f-438762ae001f": {
+      "ProjectGuid": "7544d2ea-300c-4aeb-aa7f-438762ae001f",
+      "DisplayName": "IntroCPP_BinaryFileIO_NPCData",
+      "ColorIndex": 6
     }
   },
-  "NextColorIndex": 6
+  "NextColorIndex": 7
 }

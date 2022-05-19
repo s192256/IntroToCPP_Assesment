@@ -25,6 +25,7 @@
 #include <iostream>
 
 int recordIndexInt = 1;
+int theRecordCount;
 
 int main(int argc, char* argv[])
 {
@@ -38,8 +39,11 @@ int main(int argc, char* argv[])
     DataFile data;
     int currentRecordIdx = 0;
 
-    
+    // Load Function accepts the recordIndexInt to determine which record to view
     data.Load("npc_data.dat", recordIndexInt);
+
+    // Gets the amount of Records in the data file
+    theRecordCount = data.GetRecordCount();
 
     DataFile::Record* currentRecord = data.GetRecord(currentRecordIdx);
     Texture2D recordTexture = LoadTextureFromImage(currentRecord->image);
@@ -59,8 +63,14 @@ int main(int argc, char* argv[])
         if (IsKeyPressed(KEY_LEFT))
         {
             currentRecordIdx--;
-            if (recordIndexInt != 1)
-                recordIndexInt--;
+            // Sets recordIndexInt to the Record Count if the users tries to make the RecordIndexInt 
+            // less than record 1 to allow user to cycle through the record constantly 
+            recordIndexInt--;
+            if (recordIndexInt <= 0)
+                recordIndexInt = theRecordCount;
+           
+                
+               
 
             data.Load("npc_data.dat", recordIndexInt);
 
@@ -75,11 +85,17 @@ int main(int argc, char* argv[])
         if (IsKeyPressed(KEY_RIGHT))
         {
             currentRecordIdx++;
-            if (recordIndexInt != 5)
-                recordIndexInt++;
+
+            // Sets recordIndexInt to the 1 if the users tries to make the RecordIndexInt 
+            // more than record the amount of records to allow user to cycle through the record constantly 
+            recordIndexInt++;
+            if (recordIndexInt == theRecordCount + 1)
+                recordIndexInt = 1;
+               
 
             data.Load("npc_data.dat", recordIndexInt);
 
+            // prevents currentRecordIdx from going higher than the amount of Records in the data
             if (currentRecordIdx >= data.GetRecordCount() - 1)
             {
                 currentRecordIdx = data.GetRecordCount() - 1;
@@ -99,8 +115,6 @@ int main(int argc, char* argv[])
 
         DrawText("NAME", 10, 50, 20, LIGHTGRAY);
         DrawText(currentRecord->name.c_str(), 10, 80, 20, LIGHTGRAY);
-
-        //std::cout << currentRecord->name << std::endl;
 
         DrawText("AGE", 10, 120, 20, LIGHTGRAY);
         DrawText(to_string(currentRecord->age).c_str(), 10, 150, 20, LIGHTGRAY);

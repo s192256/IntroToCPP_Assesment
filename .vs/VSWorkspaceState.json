@@ -1,6 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\AIE_06",
+    "\\IntroCPP_BinaryFileIO_NPCData",
+    "\\IntroToCPP_Assesment"
   ],
+  "SelectedNode": "\\IntroCPP_BinaryFileIO_NPCData\\DataFile.cpp",
   "PreviewInSolutionExplorer": false
 }
