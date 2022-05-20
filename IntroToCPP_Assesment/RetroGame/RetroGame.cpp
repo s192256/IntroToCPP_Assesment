@@ -28,7 +28,7 @@ int main()
 
     while (ballXrand == 0)
     {
-        ballXrand = distribution(generator);;
+        ballXrand = distribution(generator);
     }
     while (ballYrand == 0)
     {
@@ -50,6 +50,9 @@ int main()
     float paddleRightTop = paddleRightHeight;
     float paddleRightBot = paddleRightHeight + 86;
 
+    int leftScore = 0;
+    int rightScore = 0;
+
     //--------------------------------------------------------------------------------------
 
     // Main game loop
@@ -57,15 +60,70 @@ int main()
     {
 
         if (IsKeyDown(KEY_W))
-            paddleLeftHeight -= 5;
+        {
+            if (paddleLeftTop > 0)
+                paddleLeftHeight -= 5;
+        }
         if (IsKeyDown(KEY_S))
-            paddleLeftHeight += 5;
+        {
+            if (paddleLeftBot < screenHeight)
+                paddleLeftHeight += 5;
+        }
+           
 
         if (IsKeyDown(KEY_UP))
-            paddleRightHeight -= 5;
-
+        {
+            if (paddleRightTop > 0)
+                paddleRightHeight -= 5;
+        }
         if (IsKeyDown(KEY_DOWN))
-            paddleRightHeight += 5;
+        {
+            if (paddleRightBot < screenHeight)
+                paddleRightHeight += 5;
+        }
+
+        if (ballX <= -20)
+        {
+            ballX = screenWidth / 2;
+            ballY = screenHeight / 2;
+            ballXrand = distribution(generator);
+            ballYrand = distribution(generator);
+            while (ballXrand == 0)
+            {
+                ballXrand = distribution(generator);
+            }
+            while (ballYrand == 0)
+            {
+                ballYrand = distribution(generator);
+            }
+            ballXChange = 5 * ballXrand;
+            ballYChange = 5 * ballYrand;
+            rightScore++;
+        }
+        if (ballX >= screenWidth + 20)
+        {
+            ballX = screenWidth / 2;
+            ballY = screenHeight / 2;
+            ballXrand = distribution(generator);
+            ballYrand = distribution(generator);
+            while (ballXrand == 0)
+            {
+                ballXrand = distribution(generator);
+            }
+            while (ballYrand == 0)
+            {
+                ballYrand = distribution(generator);
+            }
+            ballXChange = 5 * ballXrand;
+            ballYChange = 5 * ballYrand;
+            leftScore++;
+        }
+
+        if (leftScore == 11 || rightScore == 11)
+        {
+            leftScore = 0;
+            rightScore = 0;
+        }
 
         paddleLeftTop = paddleLeftHeight;
         paddleLeftBot = paddleLeftHeight + 86;
@@ -108,9 +166,9 @@ int main()
             }
         }
 
-        if (ballY >= paddleLeftTop && ballY <= paddleLeftBot && ballX <= 25 && ballX >= 0 && ballXChange < 0)
+        if (ballY >= paddleLeftTop - 10 && ballY <= paddleLeftBot + 10 && ballX <= 25 && ballX >= 5 && ballXChange < 0)
             ballXChange = ballXChange * -1;
-        if (ballY >= paddleRightTop && ballY <= paddleRightBot && ballX >= screenWidth - 20 && ballX <= screenWidth && ballXChange > 0)
+        if (ballY >= paddleRightTop - 10 && ballY <= paddleRightBot + 10 && ballX >= screenWidth - 20 && ballX <= screenWidth - 5 && ballXChange > 0)
             ballXChange = ballXChange * -1;
 
         ballX += (ballXChange);
@@ -150,6 +208,82 @@ int main()
        
 
         DrawRectangle(screenWidth - 10, paddleRightHeight, 6, 86, WHITE);
+
+
+        /*if (leftScore == 0)
+        {
+            DrawRectangle(screenWidth / 2 - 30, 20, 10, 70, WHITE);
+            DrawRectangle(screenWidth / 2 - 70, 20, 10, 70, WHITE);
+            DrawRectangle(screenWidth / 2 - 70, 20, 50, 10, WHITE);
+            DrawRectangle(screenWidth / 2 - 70, 80, 50, 10, WHITE);
+        }
+        else if (leftScore == 1)
+        {
+            DrawRectangle(screenWidth / 2 - 30, 20, 10, 70, WHITE);
+        }
+        if (leftScore == 8)
+        {
+
+            
+        }*/
+
+        if (leftScore == 0 || leftScore == 2 || leftScore == 3 || leftScore == 5 || leftScore == 6 || leftScore == 7 || leftScore == 8 || leftScore == 9 || leftScore == 10)
+            DrawRectangle(screenWidth / 2 - 70, 20, 50, 10, WHITE); //TOP
+        if (leftScore == 0 || leftScore == 4 || leftScore == 5 || leftScore == 6 || leftScore == 8 || leftScore == 9 || leftScore == 10)
+            DrawRectangle(screenWidth / 2 - 70, 20, 10, 35, WHITE); // TOP Left
+        if (leftScore == 0 || leftScore == 1 || leftScore == 2 || leftScore == 3 || leftScore == 4 || leftScore == 7 || leftScore == 8 || leftScore == 9 || leftScore == 10 || leftScore == 11)
+            DrawRectangle(screenWidth / 2 - 30, 20, 10, 35, WHITE); // TOP Right
+        if (leftScore == 2 || leftScore == 3 || leftScore == 4 || leftScore == 5 || leftScore == 6 || leftScore == 8 || leftScore == 9)
+            DrawRectangle(screenWidth / 2 - 70, 50, 50, 10, WHITE); // MID
+        if (leftScore == 0 || leftScore == 2 || leftScore == 6 || leftScore == 8 || leftScore == 10)
+            DrawRectangle(screenWidth / 2 - 70, 50, 10, 35, WHITE); // Bottom Left
+        if (leftScore == 0 || leftScore == 1 || leftScore == 3 || leftScore == 4 || leftScore == 5 || leftScore == 6 || leftScore == 7 || leftScore == 8 || leftScore == 9 || leftScore == 10 || leftScore == 11)
+            DrawRectangle(screenWidth / 2 - 30, 55, 10, 35, WHITE); // Bottom Right
+        if (leftScore == 0 || leftScore == 2 || leftScore == 3 || leftScore == 5 || leftScore == 6 || leftScore == 8 || leftScore == 9 || leftScore == 10)
+            DrawRectangle(screenWidth / 2 - 70, 80, 50, 10, WHITE); // Bottom
+        if (leftScore == 10)
+        {
+            DrawRectangle(screenWidth / 2 - 90, 20, 10, 35, WHITE); // TOP Right
+            DrawRectangle(screenWidth / 2 - 90, 55, 10, 35, WHITE); // Bottom Right
+        }
+        if (leftScore >= 11)
+        {
+            DrawRectangle(screenWidth / 2 - 70, 20, 10, 35, WHITE); // TOP Left
+            DrawRectangle(screenWidth / 2 - 70, 55, 10, 35, WHITE); // Bottom Left
+        }
+
+        if (rightScore == 0 || rightScore == 2 || rightScore == 3 || rightScore == 5 || rightScore == 6 || rightScore == 7 || rightScore == 8 || rightScore == 9)
+            DrawRectangle(screenWidth / 2 + 20, 20, 50, 10, WHITE); //TOP
+        if (rightScore == 0 || rightScore == 1 || rightScore == 4 || rightScore == 5 || rightScore == 6 || rightScore == 8 || rightScore == 9 || rightScore == 10)
+            DrawRectangle(screenWidth / 2 + 20, 20, 10, 35, WHITE); // TOP Left
+        if (rightScore == 0 || rightScore == 2 || rightScore == 3 || rightScore == 4 || rightScore == 7 || rightScore == 8 || rightScore == 9)
+            DrawRectangle(screenWidth / 2 + 60, 20, 10, 35, WHITE); // TOP Right
+        if (rightScore == 2 || rightScore == 3 || rightScore == 4 || rightScore == 5 || rightScore == 6 || rightScore == 8 || rightScore == 9)
+            DrawRectangle(screenWidth / 2 + 20, 50, 50, 10, WHITE); // MID
+        if (rightScore == 0 || rightScore == 1 || rightScore == 2 || rightScore == 6 || rightScore == 8 || rightScore == 10)
+            DrawRectangle(screenWidth / 2 + 20, 55, 10, 35, WHITE); // Bottom Left
+        if (rightScore == 0 || rightScore == 3 || rightScore == 4 || rightScore == 5 || rightScore == 6 || rightScore == 7 || rightScore == 8 || rightScore == 9)
+            DrawRectangle(screenWidth / 2 + 60, 55, 10, 35, WHITE); // Bottom Right
+        if (rightScore == 0 || rightScore == 2 || rightScore == 3 || rightScore == 5 || rightScore == 6 || rightScore == 8 || rightScore == 9)
+            DrawRectangle(screenWidth / 2 + 20, 80, 50, 10, WHITE); // Bottom
+        if (rightScore == 10)
+        {
+            DrawRectangle(screenWidth / 2 + 40, 20, 50, 10, WHITE); //TOP
+            DrawRectangle(screenWidth / 2 + 40, 20, 10, 35, WHITE); // TOP Left
+            DrawRectangle(screenWidth / 2 + 80, 20, 10, 35, WHITE); // TOP Right
+            DrawRectangle(screenWidth / 2 + 40, 50, 10, 35, WHITE); // Bottom Left
+            DrawRectangle(screenWidth / 2 + 80, 55, 10, 35, WHITE); // Bottom Right
+            DrawRectangle(screenWidth / 2 + 40, 80, 50, 10, WHITE); // Bottom
+        }
+        if (rightScore >= 11)
+        {
+            DrawRectangle(screenWidth / 2 + 20, 20, 10, 35, WHITE); // TOP Left
+            DrawRectangle(screenWidth / 2 + 20, 55, 10, 35, WHITE); // Bottom Left
+
+            DrawRectangle(screenWidth / 2 + 60, 20, 10, 35, WHITE); // TOP Right
+            DrawRectangle(screenWidth / 2 + 60, 55, 10, 35, WHITE); // Bottom Right
+        }
+            
 
 
         EndDrawing();
