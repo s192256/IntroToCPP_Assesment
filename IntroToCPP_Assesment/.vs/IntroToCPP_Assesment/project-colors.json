@@ -40,7 +40,12 @@
       "ProjectGuid": "7544d2ea-300c-4aeb-aa7f-438762ae001f",
       "DisplayName": "IntroCPP_BinaryFileIO_NPCData",
       "ColorIndex": 6
+    },
+    "741129bb-71fe-4511-befa-627279bc3c76": {
+      "ProjectGuid": "741129bb-71fe-4511-befa-627279bc3c76",
+      "DisplayName": "RetroGame",
+      "ColorIndex": 7
     }
   },
-  "NextColorIndex": 7
+  "NextColorIndex": 8
 }

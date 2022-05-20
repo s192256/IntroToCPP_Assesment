@@ -1,0 +1,29 @@
+﻿  RetroGame.cpp
+C:\Users\s192256\Documents\temp\IntroToCPP_Assesment\RetroGame\RetroGame.cpp(16,17): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\s192256\Documents\temp\IntroToCPP_Assesment\RetroGame\RetroGame.cpp(17,17): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\s192256\Documents\temp\IntroToCPP_Assesment\RetroGame\RetroGame.cpp(43,28): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\s192256\Documents\temp\IntroToCPP_Assesment\RetroGame\RetroGame.cpp(44,29): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\s192256\Documents\temp\IntroToCPP_Assesment\RetroGame\RetroGame.cpp(87,33): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\s192256\Documents\temp\IntroToCPP_Assesment\RetroGame\RetroGame.cpp(88,34): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\s192256\Documents\temp\IntroToCPP_Assesment\RetroGame\RetroGame.cpp(105,33): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\s192256\Documents\temp\IntroToCPP_Assesment\RetroGame\RetroGame.cpp(106,34): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\s192256\Documents\temp\IntroToCPP_Assesment\RetroGame\RetroGame.cpp(188,44): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\s192256\Documents\temp\IntroToCPP_Assesment\RetroGame\RetroGame.cpp(189,44): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\s192256\Documents\temp\IntroToCPP_Assesment\RetroGame\RetroGame.cpp(190,44): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\s192256\Documents\temp\IntroToCPP_Assesment\RetroGame\RetroGame.cpp(191,44): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\s192256\Documents\temp\IntroToCPP_Assesment\RetroGame\RetroGame.cpp(192,44): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\s192256\Documents\temp\IntroToCPP_Assesment\RetroGame\RetroGame.cpp(193,44): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\s192256\Documents\temp\IntroToCPP_Assesment\RetroGame\RetroGame.cpp(194,44): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\s192256\Documents\temp\IntroToCPP_Assesment\RetroGame\RetroGame.cpp(195,44): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\s192256\Documents\temp\IntroToCPP_Assesment\RetroGame\RetroGame.cpp(196,44): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\s192256\Documents\temp\IntroToCPP_Assesment\RetroGame\RetroGame.cpp(197,44): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\s192256\Documents\temp\IntroToCPP_Assesment\RetroGame\RetroGame.cpp(198,44): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\s192256\Documents\temp\IntroToCPP_Assesment\RetroGame\RetroGame.cpp(199,44): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\s192256\Documents\temp\IntroToCPP_Assesment\RetroGame\RetroGame.cpp(200,44): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\s192256\Documents\temp\IntroToCPP_Assesment\RetroGame\RetroGame.cpp(201,44): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\s192256\Documents\temp\IntroToCPP_Assesment\RetroGame\RetroGame.cpp(202,44): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\s192256\Documents\temp\IntroToCPP_Assesment\RetroGame\RetroGame.cpp(204,27): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\s192256\Documents\temp\IntroToCPP_Assesment\RetroGame\RetroGame.cpp(204,20): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\s192256\Documents\temp\IntroToCPP_Assesment\RetroGame\RetroGame.cpp(206,27): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\s192256\Documents\temp\IntroToCPP_Assesment\RetroGame\RetroGame.cpp(210,41): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  RetroGame.vcxproj -> C:\Users\s192256\Documents\temp\IntroToCPP_Assesment\x64\Debug\RetroGame.exe
