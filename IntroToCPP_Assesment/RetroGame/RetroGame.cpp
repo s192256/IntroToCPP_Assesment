@@ -4,8 +4,6 @@
 
 int main()
 {
-    // Initialization
-    //--------------------------------------------------------------------------------------
     int screenWidth = 800;
     int screenHeight = 450;
 
@@ -16,15 +14,12 @@ int main()
     float ballX = screenWidth / 2;
     float ballY = screenHeight / 2;
 
+    // Generates a random float everytime "distribution(generator)" is used
     std::random_device r;
     std::default_random_engine generator{ r() };
     std::uniform_real_distribution<float> distribution(-1.0, 1.0);
-    float rand = distribution(generator);
-    float rand2 = distribution(generator);
-
-
-    float ballXrand = rand;
-    float ballYrand = rand2;
+    float ballXrand = distribution(generator);
+    float ballYrand = distribution(generator);
 
     while (ballXrand == 0)
     {
@@ -53,12 +48,10 @@ int main()
     int leftScore = 0;
     int rightScore = 0;
 
-    //--------------------------------------------------------------------------------------
-
-    // Main game loop
-    while (!WindowShouldClose())    // Detect window close button or ESC key
+    // Runs while the Window is Open
+    while (!WindowShouldClose())
     {
-
+        // Changes paddle heights depending on which key is pressed
         if (IsKeyDown(KEY_W))
         {
             if (paddleLeftTop > 0)
@@ -82,6 +75,9 @@ int main()
                 paddleRightHeight += 5;
         }
 
+        // if the goes off the window on the left or right side
+        // This resets its position and direction
+        // Adds score to scoring team
         if (ballX <= -20)
         {
             ballX = screenWidth / 2;
@@ -100,7 +96,7 @@ int main()
             ballYChange = 5 * ballYrand;
             rightScore++;
         }
-        if (ballX >= screenWidth + 20)
+        else if (ballX >= screenWidth + 20)
         {
             ballX = screenWidth / 2;
             ballY = screenHeight / 2;
@@ -119,6 +115,7 @@ int main()
             leftScore++;
         }
 
+        // resets scores if either team wins by reaching 11
         if (leftScore == 11 || rightScore == 11)
         {
             leftScore = 0;
@@ -131,6 +128,7 @@ int main()
         paddleRightTop = paddleRightHeight;
         paddleRightBot = paddleRightHeight + 86;
 
+        // makes the balls minimum X and Y speed 2.5 pixels a frame to keep the game interesting
         if (ballXChange < 2.5 && ballXChange >= 0)
             ballXChange = 2.5;
         if (ballXChange > -2.5 && ballXChange < 0)
@@ -140,6 +138,7 @@ int main()
         if (ballYChange > -2.5 && ballYChange < 0)
             ballYChange = -2.5;
 
+        // sets bool diredirectionChangect to false if the ball is not close to the top and bottom edge of the screen
         if (ballY < screenHeight - 10)
         {
             directionChange = false; 
@@ -149,6 +148,7 @@ int main()
             directionChange = false;
         }
 
+        // Inverts the balls Y direction if it hits the top and bottom edge of the screen
         if (ballY > screenHeight - 10)
         {
             if (directionChange == false)
@@ -166,67 +166,33 @@ int main()
             }
         }
 
+        // Inverts the balls X direction if it hits the Paddles
         if (ballY >= paddleLeftTop - 10 && ballY <= paddleLeftBot + 10 && ballX <= 25 && ballX >= 5 && ballXChange < 0)
             ballXChange = ballXChange * -1;
         if (ballY >= paddleRightTop - 10 && ballY <= paddleRightBot + 10 && ballX >= screenWidth - 20 && ballX <= screenWidth - 5 && ballXChange > 0)
             ballXChange = ballXChange * -1;
 
+        // Moves the Ball
         ballX += (ballXChange);
         ballY += (ballYChange);
 
-        
-
-
-        // Draw
-        // 
-        //----------------------------------------------------------------------------------
         BeginDrawing();
 
         ClearBackground(BLACK);
 
-
-        DrawText("|", screenWidth / 2 - 1, 7.5, 20, WHITE);
-        DrawText("|", screenWidth / 2 - 1, 37.5, 20, WHITE);
-        DrawText("|", screenWidth / 2 - 1, 67.5, 20, WHITE);
-        DrawText("|", screenWidth / 2 - 1, 97.5, 20, WHITE);
-        DrawText("|", screenWidth / 2 - 1, 127.5, 20, WHITE);
-        DrawText("|", screenWidth / 2 - 1, 157.5, 20, WHITE);
-        DrawText("|", screenWidth / 2 - 1, 187.5, 20, WHITE);
-        DrawText("|", screenWidth / 2 - 1, 217.5, 20, WHITE);
-        DrawText("|", screenWidth / 2 - 1, 247.5, 20, WHITE);
-        DrawText("|", screenWidth / 2 - 1, 277.5, 20, WHITE);
-        DrawText("|", screenWidth / 2 - 1, 307.5, 20, WHITE);
-        DrawText("|", screenWidth / 2 - 1, 337.5, 20, WHITE);
-        DrawText("|", screenWidth / 2 - 1, 367.5, 20, WHITE);
-        DrawText("|", screenWidth / 2 - 1, 397.5, 20, WHITE);
-        DrawText("|", screenWidth / 2 - 1, 427.5, 20, WHITE);
+        // draws "|" to mark the centre of the screen depending on screen Height and Width
+        for (int i = 7.5; i < screenHeight; i += 30)
+        {
+            DrawText("|", screenWidth / 2 - 1, i, 20, WHITE);
+        }
+     
 
         DrawCircle(ballX, ballY, 10, WHITE);
 
         DrawRectangle(10, paddleLeftHeight, 6, 86, WHITE);
-
-       
-
         DrawRectangle(screenWidth - 10, paddleRightHeight, 6, 86, WHITE);
 
-
-        /*if (leftScore == 0)
-        {
-            DrawRectangle(screenWidth / 2 - 30, 20, 10, 70, WHITE);
-            DrawRectangle(screenWidth / 2 - 70, 20, 10, 70, WHITE);
-            DrawRectangle(screenWidth / 2 - 70, 20, 50, 10, WHITE);
-            DrawRectangle(screenWidth / 2 - 70, 80, 50, 10, WHITE);
-        }
-        else if (leftScore == 1)
-        {
-            DrawRectangle(screenWidth / 2 - 30, 20, 10, 70, WHITE);
-        }
-        if (leftScore == 8)
-        {
-
-            
-        }*/
-
+        // Draws a rectangle depending on the score to form numbers (like a digital clock lighting up rectangular lights)
         if (leftScore == 0 || leftScore == 2 || leftScore == 3 || leftScore == 5 || leftScore == 6 || leftScore == 7 || leftScore == 8 || leftScore == 9 || leftScore == 10)
             DrawRectangle(screenWidth / 2 - 70, 20, 50, 10, WHITE); //TOP
         if (leftScore == 0 || leftScore == 4 || leftScore == 5 || leftScore == 6 || leftScore == 8 || leftScore == 9 || leftScore == 10)
@@ -252,6 +218,7 @@ int main()
             DrawRectangle(screenWidth / 2 - 70, 55, 10, 35, WHITE); // Bottom Left
         }
 
+        // Draws a rectangle depending on the score to form numbers (like a digital clock lighting up rectangular lights)
         if (rightScore == 0 || rightScore == 2 || rightScore == 3 || rightScore == 5 || rightScore == 6 || rightScore == 7 || rightScore == 8 || rightScore == 9)
             DrawRectangle(screenWidth / 2 + 20, 20, 50, 10, WHITE); //TOP
         if (rightScore == 0 || rightScore == 1 || rightScore == 4 || rightScore == 5 || rightScore == 6 || rightScore == 8 || rightScore == 9 || rightScore == 10)
@@ -283,18 +250,10 @@ int main()
             DrawRectangle(screenWidth / 2 + 60, 20, 10, 35, WHITE); // TOP Right
             DrawRectangle(screenWidth / 2 + 60, 55, 10, 35, WHITE); // Bottom Right
         }
-            
-
 
         EndDrawing();
-        //----------------------------------------------------------------------------------
     }
-
-    // De-Initialization
-    //--------------------------------------------------------------------------------------   
-    CloseWindow();        // Close window and OpenGL context
-    //--------------------------------------------------------------------------------------
-
+    CloseWindow(); 
     return 0;
 }
 
